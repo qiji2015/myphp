@@ -2,6 +2,7 @@
 class core_action extends Qtpl{
 	function render($tpl,$params=array()){
 		$_tpl = parent::assign($params);
+		$bloghost = core_lib_constant::MAIN_URL;
 		require(QPHP::$appDir."/tpl/{$tpl}");
 	}
 	function redirict($url){

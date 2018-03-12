@@ -21,7 +21,7 @@ class Qtpl{
 	static function createUrl($ac, $do, $params = array(), $domain=''){
 		switch ($domain){
 			case 'admin':
-				$url = core_lib_constant::MAIN_URL;
+				$url = core_lib_constant::ADMIN_URL;
 				break;
 			default:
 				$url = core_lib_constant::MAIN_URL;
