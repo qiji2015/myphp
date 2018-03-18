@@ -1,4 +1,4 @@
-./QPHP/db_config.php
-./QPHP/core/lib/constant.class.php
+$GIT_DIR/QPHP/db_config.php
+$GIT_DIR/QPHP/core/lib/constant.class.php
 .ds_store/
 .git

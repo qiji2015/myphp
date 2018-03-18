@@ -6,7 +6,7 @@ class core_lib_constant {
 	//站点地址
 	const MAIN_URL = "http://www.xxx.com/";
 	//admin 域名
-	const ADMIN_URL = "http://zblog.xx.com/myphp/";
+	const ADMIN_URL = "http://zblog.xxx.com/myphp/";
 	//表前缀
 	const TABLE_PRE = "zbp_";
 	//key
