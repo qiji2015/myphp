@@ -25,9 +25,13 @@ class core_model_attrlist extends core_model{
 			}else{
 				$data['parent_id'] = 0;
 				$data['attr_name'] = $data['parent_name'];
-				unset($data['parent_name']);
+			}
+			if($this->selectOne(array('attr_name'=>$data['attr_name']))) {
+				$this->setError(0,'已经存在');
+				return false;
 			}
 			$data['is_show'] = 1;//$data['is_show'] ? 1 : 0;
+			unset($data['parent_name']);
 			return $this->insert($data);
 		}else{
 			return false;

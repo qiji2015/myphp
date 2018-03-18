@@ -8,7 +8,7 @@
       <input name="_id" type="hidden" value="<?php echo $_tpl['attr']['es_id'];?>" />
       <input name="id" type="hidden" value="<?php echo $_tpl['id'];?>" />
       <p>
-        <span class="title">名称:</span><?php echo $_tpl['post']['title'];?>
+        <span class="title">名称:</span><?php echo $_tpl['post']['log_Title'];?>
       </p>
       <p>
         <span class="title">出发点:</span><br />
@@ -42,8 +42,8 @@
         <span class="title">月份:</span><br />
         <select name="month">
           <?php foreach ($_tpl['month'] as $k=>$v) { ?>
-          <option value="<?php echo $['attr_name'];?>" <?php if($['attr_name'] == $_tpl['data']['month']) echo "selcted";?>>
-            <?php echo $['attr_name'];?>
+          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['month']) echo "selcted";?>>
+            <?php echo $v['attr_name'];?>
           </option>
           <?php }?>
         </select>
@@ -52,8 +52,8 @@
         <span class="title">假期:</span><br />
         <select name="holiday">
           <?php foreach ($_tpl['holiday'] as $k=>$v) { ?>
-          <option value="<?php echo $['attr_name'];?>" <?php if($['attr_name'] == $_tpl['data']['holiday']) echo "selcted";?>>
-            <?php echo $['attr_name'];?>
+          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['holiday']) echo "selcted";?>>
+            <?php echo $v['attr_name'];?>
           </option>
           <?php }?>
         </select>
@@ -62,8 +62,8 @@
         <span class="title">周期:</span><br />
         <select name="cycle">
           <?php foreach ($_tpl['cycle'] as $k=>$v) { ?>
-          <option value="<?php echo $['attr_name'];?>" <?php if($['attr_name'] == $_tpl['data']['cycle']) echo "selcted";?>>
-            <?php echo $['attr_name'];?>
+          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['cycle']) echo "selcted";?>>
+            <?php echo $v['attr_name'];?>
           </option>
           <?php }?>
         </select>

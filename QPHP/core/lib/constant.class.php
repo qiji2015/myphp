@@ -4,9 +4,9 @@
  */
 class core_lib_constant {
 	//站点地址
-	const MAIN_URL = "http://www.2.com/";
+	const MAIN_URL = "http://www.xx.com/";
 	//admin 域名
-	const ADMIN_URL = "http://www.2.com/myphp/";
+	const ADMIN_URL = "http://zblog.xx.com/myphp/";
 	//表前缀
 	const TABLE_PRE = "zbp_";
 	//key
@@ -15,5 +15,6 @@ class core_lib_constant {
 	const ES_HOST = "http://127.0.0.1";
 	const ES_INDEX = "/travels/notes";
 	const REWRITE = false;
-	const PAGE_NUM = 20;
+	const PAGE_NUM = 10;
+	const API_KEY = "w4fhs283dhakwhe8325a8sd";
 }

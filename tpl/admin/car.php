@@ -55,7 +55,7 @@ if($_tpl['car_id']){
       ?>
   </table><hr/>
   <p class="pagebar">
-    <?php echo Qtpl::paged($_tpl['totalSize'],core_lib_constant::PAGE_NUM,$_tpl['page'],'admin','car','style');?>
+    <?php echo Qtpl::paged($_tpl['totalSize'],core_lib_constant::PAGE_NUM,$_tpl['page'],'admin','car','style','admin');?>
   </p>
 </div>
 </div>

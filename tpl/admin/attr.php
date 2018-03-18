@@ -15,8 +15,8 @@
       <th>类型</th><th>属性值</th>
     </tr>
     <?php
-      if($_tpl['car']){
-      foreach ($_tpl['car'] as $k=>$v) {
+      if($_tpl['attr']){
+      foreach ($_tpl['attr'] as $k=>$v) {
     ?>
     <tr>
       <td class="td5"><?php echo $v['attr_name'];?></td>

@@ -19,14 +19,17 @@ class control_admin extends core_action{
 		if($rs){
 			$params['parent_list'] = self::_join($rs,'attr_name');
 			foreach ($rs as $k=>$v) {
-				$rs[$k]['vv'] = self::_join($model->getattr($v['parent_id']),'attr_name');
+				$rs[$k]['vv'] = self::_join($model->getattr($v['attr_id']),'attr_name');
 			}
 			$params['attr'] = $rs;
 		}
 		switch ($_GET['op']) {
 			case 'add':
-				$fun = $attr_id > 0 ? 'edit' : 'create';
-				if($post['parent_name']) $model->$fun(array('attr_name'=>$post['attr_name'],'parent_name'=>$post['parent_name']));
+				$fun = $attr_id > 0 ? 'editattr' : 'addattr';
+				if($post['parent_name']){
+					$res =$model->$fun(array('attr_name'=>$post['attr_name'],'parent_name'=>$post['parent_name']));
+					$this->redirect(Qtpl::createUrl('admin', 'attr','','admin'));
+				}
 				break;
 		}
 		$this->render('admin/attr.php', $params);
@@ -69,38 +72,49 @@ class control_admin extends core_action{
 	function road(){
 		$params = array('blogtitle'=>'公路管理');
 		$road_id = intval($_REQUEST['road_id']);
-		$page = intval($_REQUEST['page']);
+		$page = intval($_REQUEST['p']);
 		$road_name = Qutil::filter($_REQUEST['road_name']);
 		$model = new core_model_road($road_id);
 		switch ($_GET['op']) {
 			case 'add':
 				$fun = $road_id > 0 ? 'edit' : 'create';
-				if($road_name) $model->$fun(array('road_name'=>$road_name));
+				if($road_name) {
+					$model->$fun(array('road_name'=>$road_name));
+					$this->redirect(Qtpl::createUrl('admin', 'road','','admin'));
+				}
 				break;
 			case 'search':
 				if($road_name) $condi = "road_name like '%{$road_name}%'";
 				break;
 			case 'del':
-				if($road_id) $model->del();
+				if($road_id) {
+					$model->del();
+					$this->redirect(Qtpl::createUrl('admin', 'road','','admin'));
+				}
 				break;
 		}
 		if($road_id) $params['oneroad'] = $model->get();
 		$params['road_id'] = $road_id;
 		$params['page'] = $page;
+		$model->setPage($page);
+		$model->setLimit(core_lib_constant::PAGE_NUM);
+		$model->setCount(TRUE);
 		$rs = $model->select($condi);
-	    $params['pageSize'] = $rs->totalSize;
+	    $params['totalSize'] = $rs->totalSize;
 		$params['road'] = $rs->items;
 		$this->render('admin/road.php', $params);
 	}
 	function spot(){
 		$params = array('blogtitle'=>'景点管理');
 		$spot_id = intval($_REQUEST['spot_id']);
-		$page = intval($_REQUEST['page']);
+		$page = intval($_REQUEST['p']);
 		$key = Qutil::filter($_REQUEST['key']);
 		$post = Qutil::filter($_POST);
 		$model = new core_model_spot($spot_id);
 		switch ($_GET['op']) {
 			case 'add':
+				$params['onespot'] = $model->getData();
+				$params['spot_id'] = $spot_id;
 				$fun = $spot_id > 0 ? 'edit' : 'create';
 				unset($post['spot_id']);
 				$region_model = new core_model_region();
@@ -115,15 +129,18 @@ class control_admin extends core_action{
 				break;
 		}
 		$params['page'] = $page;
+		$model->setPage($page);
+		$model->setLimit(core_lib_constant::PAGE_NUM);
+		$model->setCount(TRUE);
 		$rs = $model->select($condi);
-	    $params['pageSize'] = $rs->totalSize;
+	    $params['totalSize'] = $rs->totalSize;
 	    $params['spot'] = $rs->items;
 		$this->render('admin/spot.php', $params);
 	}
 	function car(){
 		$params = array('blogtitle'=>'车型管理');
 		$car_id = intval($_REQUEST['car_id']);
-		$page = intval($_REQUEST['page']);
+		$page = intval($_REQUEST['p']);
 		$key = Qutil::filter($_REQUEST['key']);
 		$model = new core_model_car($car_id);
 		$car_brand_name = Qutil::filter($_REQUEST['car_brand_name']);
@@ -147,8 +164,11 @@ class control_admin extends core_action{
 		if($car_id) $params['onecar'] = $model->get();
 		$params['car_id'] = $car_id;
 		$params['page'] = $page;
+		$model->setPage($page);
+		$model->setLimit(core_lib_constant::PAGE_NUM);
+		$model->setCount(TRUE);
 		$rs = $model->select($condi);
-	    $params['pageSize'] = $rs->totalSize;
+	    $params['totalSize'] = $rs->totalSize;
 	    $params['car'] = $rs->items;
 		$this->render('admin/car.php', $params);
 	}

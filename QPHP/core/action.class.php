@@ -5,7 +5,7 @@ class core_action extends Qtpl{
 		$bloghost = core_lib_constant::MAIN_URL;
 		require(QPHP::$appDir."/tpl/{$tpl}");
 	}
-	function redirict($url){
+	function redirect($url){
 		header("Location:{$url}");
 		exit;
 	}

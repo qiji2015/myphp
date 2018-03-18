@@ -7,7 +7,7 @@
 <?php
 if($_tpl['spot_id']){
 ?>
-<p>全称：<input name="name" value="<?php echo $_tpl['onespot']['name'];?>" style="width:150px;" type="text" />
+<p>全称：<input name="name" value="<?php echo $_tpl['onespot']['name'];?>" style="width:280px;" type="text" />
   简称：<input name="abbreviation" value="<?php echo $_tpl['onespot']['abbreviation'];?>" style="width:150px;" type="text" />
   级别：<input name="level" value="<?php echo $_tpl['onespot']['level'];?>" style="width:150px;" type="text" />
   地区：<input name="place" value="<?php echo $_tpl['onespot']['place'];?>" data-list="<?php echo $_tpl['all_region'];?>" class="awesomplete" style="width:150px;" type="text" />
@@ -43,14 +43,14 @@ if($_tpl['spot_id']){
       foreach ($_tpl['spot'] as $k=>$v) {
     ?>
     <tr>
-      <td class="td5"><?php echo $v['spot_id'];?></td>
+      <td class="td5"><?php echo $v['jq_id'];?></td>
       <td class="td10"><?php echo $v['name'];?></td>
       <td class="td10"><?php echo $v['abbreviation'];?></td>
       <td class="td10"><?php echo $v['level'];?></td>
       <td class="td10"><?php echo $v['place'];?></td>
       <td class="td10 tdCenter">
-        <a href="<?php echo Qtpl::createUrl('admin', 'spot',array('spot_id'=>$v['spot_id'],'op'=>'add'),'admin');?>" class="">编辑</a>&nbsp;
-        <a href="<?php echo Qtpl::createUrl('admin', 'spot',array('spot_id'=>$v['spot_id'],'op'=>'del'),'admin');?>" class="">删除</a>
+        <a href="<?php echo Qtpl::createUrl('admin', 'spot',array('spot_id'=>$v['jq_id'],'op'=>'add'),'admin');?>" class="">编辑</a>&nbsp;
+        <a href="<?php echo Qtpl::createUrl('admin', 'spot',array('spot_id'=>$v['jq_id'],'op'=>'del'),'admin');?>" class="">删除</a>
       </td>
     </tr>
      <?php
@@ -61,7 +61,7 @@ if($_tpl['spot_id']){
       ?>
   </table><hr/>
   <p class="pagebar">
-    <?php echo Qtpl::paged($_tpl['totalSize'],core_lib_constant::PAGE_NUM,$_tpl['page'],'admin','spot','style');?>
+    <?php echo Qtpl::paged($_tpl['totalSize'],core_lib_constant::PAGE_NUM,$_tpl['page'],'admin','spot','style','admin');?>
   </p>
 </div>
 </div>

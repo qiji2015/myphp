@@ -13,7 +13,7 @@ class core_model_spot extends core_model{
 	public function tableName(){
 		return core_lib_constant::TABLE_PRE."spot";
 	}
-	//获取所有公路
+	//获取所有景区
 	function getallspot(){
 		return $this->select()->items;
 	}

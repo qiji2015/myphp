@@ -82,7 +82,7 @@ class Qdb extends DbObject{
 	 * @param int limit ,0 is all
 	 */
 	function setLimit($limit){
-		$this->limit= intval($limit) > 0 ? intval($limit) : 1;
+		$this->limit= intval($limit) > 0 ? intval($limit) : 0;
 	}
 	
 	/**
