@@ -4,7 +4,7 @@ class control_api extends core_action{
 	public $params;
 
 	function __construct(){
-		
+		$_POST = $_GET;
 	}
 	//公路API
 	function road(){
@@ -12,6 +12,7 @@ class control_api extends core_action{
 		$model = new core_model_road();
 		if($_POST['op'] == 'add'){
 			$road_name = Qutil::filter($_POST['road_name']);
+			if(!$road_name) $this->_outjson(0,'缺少参数[road_name]');
 			$rs = $model->create(array('road_name'=>$road_name));
 			if($rs){
 				$this->_outjson(1,'添加成功');
@@ -33,7 +34,8 @@ class control_api extends core_action{
 				$this->_outjson(0,'缺少参数');
 			}
 			$region_model = new core_model_region();
-			$post['region_id'] = $region_model->selectOne("region_name like '{$post['place']}%'");
+			$reg = $region_model->selectOne("region_name like '{$post['place']}%'");
+			if($reg) $post['region_id'] = $reg['region_id'];
 			$rs = $model->create($post);
 			if($rs){
 				$this->_outjson(1,'添加成功');
@@ -90,14 +92,14 @@ class control_api extends core_action{
 			if(!$attr_name){
 				$this->_outjson(0,'缺少参数[attr_name]');
 			}
-			$rs = $model->addattr(array('attr_name'=>$attr_name,'parent_name'=>$parent_name));
+			$rs = $model_attr->addattr(array('attr_name'=>$attr_name,'parent_name'=>$parent_name));
 			if($rs){
 				$this->_outjson(1,'添加成功');
 			}else{
-				$this->_outjson(0,'添加失败'.$model->getDbError());
+				$this->_outjson(0,'添加失败'.$model_attr->getDbError());
 			}
 		}else{
-			$rs = $model->select(array('parent_id'=>$res['attr_id']))->items;
+			$rs = $model_attr->select(array('parent_id'=>$res['attr_id']))->items;
 			$this->_outjson(1,$rs);
 		}
 	}
@@ -107,6 +109,7 @@ class control_api extends core_action{
 		if(!$post['id']){
 			$this->_outjson(0,'缺少参数[id]');
 		}
+		$model_attr = new core_model_postattr();
 		$model_attr->bulidData($post);
 		$rs = $model_attr->create();
 		if($rs){

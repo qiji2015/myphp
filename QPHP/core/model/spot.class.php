@@ -25,7 +25,12 @@ class core_model_spot extends core_model{
 				$this->setError(0,'已经存在');
 				return false;
 			}
-			return $this->insert($data);
+			$data2['name'] = $data['name'];
+			$data2['place'] = $data['place'];
+			$data2['level'] = $data['level'];
+			$data2['abbreviation'] = $data['abbreviation'];
+			$data2['region_id'] = $data['region_id'];
+			return $this->insert($data2);
 		}else{
 			return false;
 		}
@@ -34,8 +39,8 @@ class core_model_spot extends core_model{
 	function edit($data){
 		if(!$this->_pkid) return false;
 		if($data['name']) $this->set('name', $data['name']);
-		#if($data['place']) $this->set('place', $data['place']);
-		if($data['place_id']) $this->set('place_id', $data['place_id']);
+		if($data['place']) $this->set('place', $data['place']);
+		if($data['region_id']) $this->set('region_id', $data['region_id']);
 		if($data['level']) $this->set('level', $data['level']);
 		if($data['abbreviation']) $this->set('abbreviation', $data['abbreviation']);
 		return $this->save();

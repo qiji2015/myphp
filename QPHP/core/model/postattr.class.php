@@ -25,6 +25,10 @@ class core_model_postattr extends core_model{
 		$id = intval($data['id']);
 		$model = new core_model_post($id);
 		$post = $model->getPost();
+		$attr_arr = $this->selectOne(array('log_ID'=>$id));
+		if($attr_arr){
+			$arr = json_decode($attr_arr['json_data'],true);
+		}
 		$arr['title'] = $post['log_Title'];
 		$arr['info'] = $post['log_Intro'];
 		$arr['content'] = $post['log_Content'];

@@ -118,7 +118,8 @@ class control_admin extends core_action{
 				$fun = $spot_id > 0 ? 'edit' : 'create';
 				unset($post['spot_id']);
 				$region_model = new core_model_region();
-				$post['region_id'] = $region_model->selectOne("region_name like '{$post['place']}%'");
+				$re = $region_model->selectOne("region_name like '{$post['place']}%'");
+				if($re) $post['region_id'] = $re['region_id']
 				if($post['name']) $model->$fun($post);
 				break;
 			case 'search':
