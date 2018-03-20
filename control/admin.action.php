@@ -119,7 +119,7 @@ class control_admin extends core_action{
 				unset($post['spot_id']);
 				$region_model = new core_model_region();
 				$re = $region_model->selectOne("region_name like '{$post['place']}%'");
-				if($re) $post['region_id'] = $re['region_id']
+				if($re) $post['region_id'] = $re['region_id'];
 				if($post['name']) $model->$fun($post);
 				break;
 			case 'search':
@@ -181,5 +181,15 @@ class control_admin extends core_action{
 			$str .= $v[$key].$sp;
 		}
 		return rtrim($str,$sp);
+	}
+
+	function login(){
+		$dir = "/home/wwwroot/www.mxsp.com";
+		require $dir.'/zb_system/function/c_system_base.php';
+		$zbp->CheckGzip();
+		$zbp->Load();
+		if (!$zbp->CheckRights('admin')) {
+		    Redirect($dir.'/zb_system/login.php');
+		}
 	}
 }
