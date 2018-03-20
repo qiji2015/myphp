@@ -1,4 +1,5 @@
 <?PHP
+@error_reporting(E_ALL & ~E_NOTICE);
 @ini_set("session.cookie_httponly", 1); 
 header('X-Content-Type-Options:nosniff');
 header('X-Frame-Options:SAMEORIGIN');
