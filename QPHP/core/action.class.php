@@ -40,4 +40,11 @@ class core_action extends Qtpl{
 			return true;
 		}
 	}
+	/**
+	 * 检查用户是否登录
+	 */
+	function isLogin(){
+		$model = new core_model_member();
+		return $model->checkLogin();
+	}
 }

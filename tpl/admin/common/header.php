@@ -28,7 +28,7 @@
 <aside class="left">
   <ul id="leftmenu">
   	<li>
-      <a href=""><span>所有文章</span></a>
+      <a href="<?php echo Qtpl::createUrl('admin', 'index','','admin');?>"><span>所有文章</span></a>
     </li>
     <li>
       <a href="<?php echo Qtpl::createUrl('admin', 'road','','admin');?>"><span>公路管理</span></a>

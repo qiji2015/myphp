@@ -1,11 +1,16 @@
 <?php require 'common/header.php';?>
-<link rel="stylesheet" type="text/css" href="<?php echo core_lib_constant::ADMIN_URL;?>assets/awesomplete/awesomplete.css"/>
-<script src="<?php echo core_lib_constant::ADMIN_URL;?>assets/awesomplete/awesomplete.min.js" type="text/javascript"></script>
 <div id="divMain">
 <div class="divHeader"><?php echo $_tpl['blogtitle'] ?></div><div class="SubMenu"></div><div id="divMain2">
 <form class="search" method="post" action="<?php echo Qtpl::createUrl('admin', 'attr',array('op'=>'add'),'admin');?>">
 <p>属性类型:
-  <input name="parent_name" style="width:150px;" type="text" value="" data-list="<?php echo $_tpl['parent_list'] ?>" class="awesomplete" />
+  <select name="parent_name">
+    <?php
+      if($_tpl['attr']){
+      foreach ($_tpl['attr'] as $k=>$v) {
+    ?>
+    <option value="<?php echo $v['attr_name'];?>"><?php echo $v['attr_name'];?></option>
+    <?php }}?>
+  </select>          
   属性值：<input name="attr_name" style="width:150px;" type="text" value="" />
   <input type="submit" class="button" value="添加"/>
 </p>

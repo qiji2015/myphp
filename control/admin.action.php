@@ -4,11 +4,13 @@ class control_admin extends core_action{
 	public $params;
 
 	function __construct(){
-		
+		if(!$this->isLogin()){
+			$this->redirect("/zb_system/login.php");
+		}
 	}
 
 	function index(){
-		$params = array('blogtitle'=>'地区管理');
+		$params = array('blogtitle'=>'文章管理');
 		$this->render('admin/index.php', $params);
 	}
 	function attr(){
@@ -17,7 +19,7 @@ class control_admin extends core_action{
 		$post = Qutil::filter($_POST);
 		$rs = $model->getattr(0);
 		if($rs){
-			$params['parent_list'] = self::_join($rs,'attr_name');
+			$params['parent_list'] = $rs;
 			foreach ($rs as $k=>$v) {
 				$rs[$k]['vv'] = self::_join($model->getattr($v['attr_id']),'attr_name');
 			}
@@ -47,7 +49,7 @@ class control_admin extends core_action{
 			$post = Qutil::filter($_POST);
 			$model_attr->bulidData($post);
 			$model_attr->create();
-			$this->showMsg();
+			$this->redirect(Qtpl::createUrl('admin', 'attr_edit','','admin'));
 		}
 		//属性内容
 		$model_region = new core_model_region();
@@ -181,15 +183,5 @@ class control_admin extends core_action{
 			$str .= $v[$key].$sp;
 		}
 		return rtrim($str,$sp);
-	}
-
-	function login(){
-		$dir = "/home/wwwroot/www.mxsp.com";
-		require $dir.'/zb_system/function/c_system_base.php';
-		$zbp->CheckGzip();
-		$zbp->Load();
-		if (!$zbp->CheckRights('admin')) {
-		    Redirect($dir.'/zb_system/login.php');
-		}
 	}
 }
