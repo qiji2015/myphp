@@ -67,10 +67,11 @@ class control_admin extends core_action{
 			//define(DEBUG, TRUE);
 			$post = Qutil::filter($_POST);
 			$model_attr->bulidData($post);
-			var_dump($model_attr->create());
-			var_dump($model_attr->getError());
-			exit();
-			//$this->redirect(Qtpl::createUrl('admin', 'attr_edit','','admin'));
+			if($model_attr->create()){
+				return $this->showMsg('操作成功',1,Qtpl::createUrl('admin', 'index','','admin'));
+			}else{
+				return $this->showMsg('操作失败'.$model_attr->getError(),2,Qtpl::createUrl('admin', 'attr_edit',array('id'=>$id),'admin'));
+			}
 		}
 		//属性内容
 		$model_region = new core_model_region();
