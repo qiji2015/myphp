@@ -22,12 +22,11 @@ class core_model_car extends core_model{
 		$rs = $this->select()->items;
 		$car = array();
 		if($rs){
-			foreach ($rs as $key => $v) {
-				$car['car_id'][] = $v['car_id'];
-				$car['full_name'][] = $v['car_brand_name'].','.$v['car_type_name'];
+			foreach ($rs as $key => &$v) {
+				$v['full_name'] = $v['car_brand_name'].''.$v['car_type_name'];
 			}
 		}
-		return $car;
+		return $rs;
 	}
 	//获取所有车品牌
 	function getallbrand(){

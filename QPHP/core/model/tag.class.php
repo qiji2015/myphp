@@ -16,11 +16,12 @@ class core_model_tag extends core_model{
 	//获取tag名称
 	function getTagName($str){
 		preg_match_all('{\d+}', $str, $ids);
-		$ids = join($ids,',');
-		$rs = $this->select("ids in($ids)")->items;
+		$ids = join(',',$ids[0]);
+		$rs = $this->select("tag_ID in($ids)")->items;
+		if(!$rs) return '';
 		foreach ($rs as $v) {
-			$str .= $v['tag_Name'].',';
+			$strs .= $v['tag_Name'].',';
 		}
-		return rtrim($str,',');
+		return rtrim($strs,',');
 	}
 }

@@ -30,4 +30,15 @@ class core_model_member extends core_model{
 		}
 		return false;
 	}
+	//获取所有用户
+	function getAllMem(){
+		$rs = $this->select();
+		$arr = array();
+		if($rs->items){
+			foreach ($rs->items as $k => $v) {
+				$arr[$v['mem_ID']] = $v['mem_Name'];
+			}
+		}
+		return $arr;
+	}
 }

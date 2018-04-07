@@ -9,6 +9,7 @@ class Qes{
 	}
 	//添加数据
 	public function add($data){
+		unset($data['_id']);
 		$rs = $this->post($this->_url, $data);
 		return $rs;
 	}
@@ -27,7 +28,7 @@ class Qes{
 	public function update($data){
 		$url = $this->_url."/{$data['_id']}/_update";
 		unset($data['_id']);
-		$rs = $this->post($url, $data);
+		$rs = $this->post($url, array('doc'=>$data,'detect_noop'=>true));
 		return $rs;
 	}
 	//请求ES

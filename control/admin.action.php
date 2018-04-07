@@ -5,12 +5,30 @@ class control_admin extends core_action{
 
 	function __construct(){
 		if(!$this->isLogin()){
-			$this->redirect("/zb_system/login.php");
+			//$this->redirect("/zb_system/login.php");
 		}
 	}
 
 	function index(){
 		$params = array('blogtitle'=>'文章管理');
+		$model = new core_model_post();
+		$params['page'] = $page;
+		$model->setPage($page);
+		$model->setLimit(core_lib_constant::PAGE_NUM);
+		$model->setCount(TRUE);
+		if($_POST['category']>0) $condi['log_CateID'] = intval($_POST['category']);
+		if($_POST['search']) {
+			$search = Qutil::filter($_POST['search']);
+			$condi[] = "(log_Title like '%{$search}%' or log_Intro like '%{$search}%')";
+		}
+		$rs = $model->select($condi);
+	    $params['totalSize'] = $rs->totalSize;
+	    $params['post'] = $rs->items;
+	    $cate = new core_model_category();
+	    $params['cate'] = $cate->getAllCate();
+	    $mem = new core_model_member();
+	    $params['mem'] = $mem->getAllMem();
+	    //print_r($params);
 		$this->render('admin/index.php', $params);
 	}
 	function attr(){
@@ -46,10 +64,13 @@ class control_admin extends core_action{
 		$params['attr'] = $model_attr->getPost();
 		if($params['attr']) $params['data'] = json_decode($params['attr']['json_data'],true);
 		if($_POST){
+			//define(DEBUG, TRUE);
 			$post = Qutil::filter($_POST);
 			$model_attr->bulidData($post);
-			$model_attr->create();
-			$this->redirect(Qtpl::createUrl('admin', 'attr_edit','','admin'));
+			var_dump($model_attr->create());
+			var_dump($model_attr->getError());
+			exit();
+			//$this->redirect(Qtpl::createUrl('admin', 'attr_edit','','admin'));
 		}
 		//属性内容
 		$model_region = new core_model_region();
@@ -183,5 +204,9 @@ class control_admin extends core_action{
 			$str .= $v[$key].$sp;
 		}
 		return rtrim($str,$sp);
+	}
+	function del(){
+		$es = new Qes();
+		$rs = $es->delete($_GET['k']);
 	}
 }

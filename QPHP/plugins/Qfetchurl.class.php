@@ -586,7 +586,7 @@ class FetchUrl {
                     break;
                 case 'delete':
                     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $v);
+                    //curl_setopt($ch, CURLOPT_POSTFIELDS, $v);
                     break;
                 default:
                     break;

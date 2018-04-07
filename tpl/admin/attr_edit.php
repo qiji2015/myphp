@@ -12,11 +12,11 @@
       </p>
       <p>
         <span class="title">出发点:</span><br />
-        <input size="40" name="from" type="text" value="<?php echo $_tpl['data']['from'];?>" data-list="<?php echo $_tpl['from'];?>" class="awesomplete" />
+        <input size="40" name="from" type="text" value="<?php echo $_tpl['data']['from'];?>" data-list="<?php echo $_tpl['from'];?>" class="awesomplete" /> 注：如果是多个直接用 , 分隔，填写最后一级地区，系统自动抓取上级地区
       </p>
       <p>
         <span class="title">目的地:</span><br />
-        <input size="40" name="to" type="text" value="<?php echo $_tpl['data']['to'];?>" data-list="<?php echo $_tpl['from'];?>" data-multiple/>
+        <input size="40" name="to" type="text" value="<?php echo $_tpl['data']['to'];?>" data-list="<?php echo $_tpl['from'];?>" data-multiple/> 注：如果是多个直接用 , 分隔，填写最后一级地区，系统自动抓取上级地区
       </p>
       <p>
         <span class="title">景点:</span><br />
@@ -42,7 +42,7 @@
         <span class="title">月份:</span><br />
         <select name="month">
           <?php foreach ($_tpl['month'] as $k=>$v) { ?>
-          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['month']) echo "selcted";?>>
+          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['month']) echo "selected";?>>
             <?php echo $v['attr_name'];?>
           </option>
           <?php }?>
@@ -52,7 +52,7 @@
         <span class="title">假期:</span><br />
         <select name="holiday">
           <?php foreach ($_tpl['holiday'] as $k=>$v) { ?>
-          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['holiday']) echo "selcted";?>>
+          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['holiday']) echo "selected";?>>
             <?php echo $v['attr_name'];?>
           </option>
           <?php }?>
@@ -62,7 +62,7 @@
         <span class="title">周期:</span><br />
         <select name="cycle">
           <?php foreach ($_tpl['cycle'] as $k=>$v) { ?>
-          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['cycle']) echo "selcted";?>>
+          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['cycle']) echo "selected";?>>
             <?php echo $v['attr_name'];?>
           </option>
           <?php }?>
