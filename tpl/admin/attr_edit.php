@@ -32,14 +32,20 @@
       </p>
       <p>
         <span class="title">风光:</span><br />
-        <input size="40" name="whither_type" type="text" value="<?php echo $_tpl['data']['whither_type'];?>" data-list="<?php echo $_tpl['whither_type'];?>" data-multiple5 />
+        <select name="whither_type">
+          <?php foreach ($_tpl['whither_type'] as $k=>$v) { ?>
+          <option value="<?php echo $v['f_name'];?>" <?php if($v['f_name'] == $_tpl['data']['whither_type']) echo "selected";?>>
+            <?php echo $v['f_name'];?>
+          </option>
+          <?php }?>
+        </select>
       </p>
       <p>
         <span class="title">人群:</span><br />
         <input size="40" name="person" type="text" value="<?php echo $_tpl['data']['person'];?>" data-list="<?php echo $_tpl['person'];?>" data-multiple6 />
       </p>
       <p>
-        <span class="title">月份:</span><br />
+        <span class="title">月季:</span><br />
         <select name="month">
           <?php foreach ($_tpl['month'] as $k=>$v) { ?>
           <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['month']) echo "selected";?>>
@@ -63,6 +69,36 @@
         <select name="cycle">
           <?php foreach ($_tpl['cycle'] as $k=>$v) { ?>
           <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['cycle']) echo "selected";?>>
+            <?php echo $v['attr_name'];?>
+          </option>
+          <?php }?>
+        </select>
+      </p>
+      <p>
+        <span class="title">环线:</span><br />
+        <select name="huanxian">
+          <?php foreach ($_tpl['huanxian'] as $k=>$v) { ?>
+          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['huanxian']) echo "selected";?>>
+            <?php echo $v['attr_name'];?>
+          </option>
+          <?php }?>
+        </select>
+      </p>
+      <p>
+        <span class="title">距离:</span><br />
+        <select name="juli">
+          <?php foreach ($_tpl['juli'] as $k=>$v) { ?>
+          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['juli']) echo "selected";?>>
+            <?php echo $v['attr_name'];?>
+          </option>
+          <?php }?>
+        </select>
+      </p>
+      <p>
+        <span class="title">人均消费:</span><br />
+        <select name="xiaofei">
+          <?php foreach ($_tpl['xiaofei'] as $k=>$v) { ?>
+          <option value="<?php echo $v['attr_name'];?>" <?php if($v['attr_name'] == $_tpl['data']['xiaofei']) echo "selected";?>>
             <?php echo $v['attr_name'];?>
           </option>
           <?php }?>

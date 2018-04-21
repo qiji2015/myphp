@@ -33,7 +33,7 @@
       <td><a href="#" target="_blank"><?php echo $v['log_Title'];?></td>
       <td class="td20"><?php echo date("Y-m-d H:i:s",$v['log_PostTime']);?></td>
       <td class="td10 tdCenter">
-        <a href="<?php echo Qtpl::createUrl('admin', 'attr_edit',array('id'=>$v['log_ID']),'admin');?>" class="button"><img src="<?php echo $bloghost ?>/zb_system/image/admin/page_edit.png" title="编辑属性" width="16"></a>
+        <a href="<?php echo Qtpl::createUrl('admin', 'attr_edit',array('id'=>$v['log_ID']),'admin');?>" class="button">编辑属性</a>
       </td>
     </tr>
     <?php

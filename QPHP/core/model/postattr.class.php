@@ -73,6 +73,10 @@ class core_model_postattr extends core_model{
 		if($data['consume']) $arr['consume'] = $data['consume'];
 		if($data['person']) $arr['person'] = $data['person'];
 		if($data['cycle']) $arr['cycle'] = $data['cycle'];
+
+		if($data['xiaofei']) $arr['xiaofei'] = $data['xiaofei'];
+		if($data['juli']) $arr['juli'] = $data['juli'];
+		if($data['huanxian']) $arr['huanxian'] = $data['huanxian'];
 		if($data['_id']) $arr['_id'] = $data['_id'];
 		$this->_esdata = $arr;
 		//print_r($this->_esdata);

@@ -42,6 +42,12 @@
     <li>
       <a href="<?php echo Qtpl::createUrl('admin', 'attr','','admin');?>"><span>属性管理</span></a>
     </li>
+    <li>
+      <a href="<?php echo Qtpl::createUrl('admin', 'whither','','admin');?>"><span>风光管理</span></a>
+    </li>
+    <li>
+      <a href="<?php echo Qtpl::createUrl('admin', 'samekey','','admin');?>"><span>同义管理</span></a>
+    </li>
   </ul>
 </aside>
 <section class="main">
