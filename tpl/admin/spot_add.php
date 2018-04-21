@@ -12,6 +12,12 @@
         <span class="title">简称:</span><br />
         <input size="40" name="abbreviation" type="text" value="<?php echo $_tpl['spot']['abbreviation'];?>"/>
       </p>
+      <?php if($_tpl['spot']['pic_url']){ ?>
+      <p>
+        <span class="title">已传头图:</span><br />
+        <img width="300px" src="/<?php echo $_tpl['spot']['pic_url'];?>"/>
+      </p>
+      <?php } ?>
       <p>
         <span class="title">头图:</span><br />
         <input name="pic_url" type="file"/>
