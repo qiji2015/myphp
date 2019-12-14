@@ -48,8 +48,9 @@ class control_index extends core_action{
 	}
 	//搜索引擎页
 	function rss(){
-		echo "搜索引擎页";
-		print_r($_GET);
+		$params = $this->_getAllAttr();
+		//print_r($params['attrlist']);
+		$this->render('home/rss.php', $params);
 	}
 	//详情页
 	function view(){
