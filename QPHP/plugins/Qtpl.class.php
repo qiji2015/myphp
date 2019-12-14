@@ -9,7 +9,35 @@ class Qtpl{
 		}
 		return $_tpl;
 	}
-
+	//获取参数
+	static function getquery(){
+	  $inpath = Qutil::filter($_GET['inpath']);
+	  $patharr = array('from','to','month','distance','cycle','person','consume','key','whither','car','spot');
+	  if($inpath){
+	    $arr = array();
+	    $kv = explode("_", $inpath);
+	    foreach ($kv as $v) {
+	      $kv2 = explode("-", $v);
+	      if(in_array($kv2[0], $patharr)){
+	        $arr[$kv2[0]] = $kv2[1];
+	      }
+	    }
+	  }
+	  return $arr;
+	}
+	//创建搜索URL
+	static function createsearchurl($kv){
+	  $arr = self::getquery();
+	  $url = array();
+	  if($arr){
+	    $arr = array_merge($arr,$kv);
+	    foreach ($arr as $k => $v) {
+	      $url[]= "{$k}-{$v}";
+	    }
+	    $str = ltrim($str,'_').".html";
+	  }
+	  return join('_',$url).".html";
+	}
 	/**
 	 * 创建url
 	 * @param string $ac 控制器名称

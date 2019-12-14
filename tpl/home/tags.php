@@ -1,31 +1,29 @@
 <?php require 'header.php';?>
 <?php
-//print_r($_tpl['hot']);
+print_r($_tpl['hot']);
 ?>
-<div class="layui-container mT20 layui-clear">
-	<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
-        <div class="layui-carousel" id="test1">
-          <div carousel-item>
-            <?php foreach ($_tpl['focus'] as $v) { ?>
-            <div><a href="/y/<?php echo $v['log_ID'];?>.html" target="_blank"><img src="<?php echo $v['log_Meta'];?>" /></div>
-            <?php } ?>
-          </div>
+<div class="layui-wrap">
+    <div class="layui-container">
+    <div class="header-left">
+        <div class="cover-img"><img src="/myphp/assets/ui/images/demo8.jpg" alt=""></div>
+        <div class="info-div">
+            <div class="title">
+                <i class="icon common-topic">#</i>
+                <h3><?php echo $_tpl['tags']['tag_Name'];?></h3>
+            </div>
+            <p>134177.9万阅读<em>/
+            </em><?php echo $_tpl['tags']['tag_Count'];?>评论<em>/
+            </em><?php echo $_tpl['tags']['tag_Count'];?>人关注<em>/
+        	</em><?php echo $_tpl['tags']['tag_Count'];?>篇内容</p>
         </div>
+    </div>
+    
+    <div class="header-right"><a class="publish-btn" href="#" target="_blank"><i class="icon common-input"></i>发布内容</a></div>
+    
     </div>
 </div>
 
 <div class="layui-container mT20 layui-clear">
-	<ul class="tb_">
-        <li id="tb_1" class="hovertab" onClick="x:HoverLi(1);"><span>发现</span></li>
-	</ul>
-    <div class="sns-nav">
-      <ul>
-          <li><a class="text-default active" href="javascript:;" >推荐</a></li>
-          <?php foreach ($_tpl['tags'] as $v) { ?>
-          <li><a class="text-default" href="/tag/<?php echo $v['tag_ID'];?>.html" target="_blank"><?php echo $v['tag_Name'];?></a></li>
-          <?php } ?>
-      </ul>
-    </div>
     <div class="dis" id="tbc_01">
 		<div id="my-gallery-container">
         
