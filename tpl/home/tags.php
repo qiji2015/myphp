@@ -1,7 +1,4 @@
 <?php require 'header.php';?>
-<?php
-print_r($_tpl['hot']);
-?>
 <div class="layui-wrap">
     <div class="layui-container">
     <div class="header-left">

@@ -25,6 +25,12 @@ class control_index extends core_action{
 		$list .= ",mem_Name";
 		//define(DEBUG,1);
 		$params['hot'] = $model->select($condi1,$list,"","order by log_PostTime desc",$leftjoin)->items;
+		if($params['hot']){
+			foreach ($params['hot'] as &$v) {
+				$v['log_Meta'] = Qtpl::replacepath(Qtpl::getpic($v['log_Meta']));
+				if(!$v['log_Meta']) $v['log_Meta'] = "/myphp/assets/ui/images/demo6.jpeg";
+			}
+		}
 		$this->render('home/index.php', $params);
 	}
 	//搜索页
@@ -50,6 +56,12 @@ class control_index extends core_action{
 		$params['page_title'] = $params['tags']['tag_Name'];
 		//define(DEBUG,1);
 		$params['hot'] = $model->select($condi,$list,"","order by log_PostTime desc",$leftjoin)->items;
+		if($params['hot']){
+			foreach ($params['hot'] as &$v) {
+				$v['log_Meta'] = Qtpl::replacepath(Qtpl::getpic($v['log_Meta']));
+				if(!$v['log_Meta']) $v['log_Meta'] = "/myphp/assets/ui/images/demo6.jpeg";
+			}
+		}
 		$this->render('home/tags.php', $params);
 	}
 	//搜索引擎页
@@ -83,6 +95,12 @@ class control_index extends core_action{
 			"order by log_PostTime desc"
 			)->items;
 		//print_r($params['hot']);
+		if($params['hot']){
+			foreach ($params['hot'] as &$v) {
+				$v['log_Meta'] = Qtpl::replacepath(Qtpl::getpic($v['log_Meta']));
+				if(!$v['log_Meta']) $v['log_Meta'] = "/myphp/assets/ui/images/demo6.jpeg";
+			}
+		}
 		$this->render('home/view.php', $params);
 	}
 	//列表页

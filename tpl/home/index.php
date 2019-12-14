@@ -1,13 +1,11 @@
 <?php require 'header.php';?>
-<?php
-//print_r($_tpl['hot']);
-?>
+
 <div class="layui-container mT20 layui-clear">
 	<div class="layui-col-xs12 layui-col-sm12 layui-col-md12">
         <div class="layui-carousel" id="test1">
           <div carousel-item>
             <?php foreach ($_tpl['focus'] as $v) { ?>
-            <div><a href="/y/<?php echo $v['log_ID'];?>.html" target="_blank"><img src="<?php echo $v['log_Meta'];?>" /></div>
+            <div><a href="/y/<?php echo $v['log_ID'];?>.html" target="_blank"><img src="<?php echo Qtpl::replacepath(Qtpl::getpic($v['log_Meta']));?>" /></div>
             <?php } ?>
           </div>
         </div>

@@ -22,12 +22,12 @@ for(var i=1;i<=2;i++){g('tb_'+i).className='normaltab';g('tbc_0'+i).className='u
 <body>
 <div class="layui-header header header-doc">
 <div class="layui-container">
-	<a class="logo" href="/">
+	<a class="logo" href="/home/">
       <img src="/myphp/assets/ui/images/logo.png" alt="">
     </a>
     
 	<ul class="layui-nav" lay-filter="">
-        <li class="layui-nav-item layui-hide-xs layui-this"><a href="/">首页</a></li>
+        <li class="layui-nav-item layui-hide-xs layui-this"><a href="/home/">首页</a></li>
         <li class="layui-nav-item layui-hide-xs"><a href="#">目的地</a></li>
         <li class="layui-nav-item layui-hide-xs"><a href="#">游记</a></li>
         <li class="layui-nav-item layui-hide-xs">

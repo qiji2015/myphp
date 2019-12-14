@@ -1,7 +1,4 @@
 <?php require 'header.php';?>
-<?php
-//print_r($_tpl['hot']);
-?>
 <div class="wrap">
 <div class="layui-container mT20 layui-clear">
 	<div class="left-box">
@@ -49,7 +46,7 @@
                  <div class="newsInfo">
     				<div class="title"><?php echo $_tpl['view']['log_Title'];?></div>   
                     <div class="newsInfo-main-box">
-                    	<?php echo $_tpl['view']['log_Content'];?>
+                    	<?php echo Qtpl::replacepath($_tpl['view']['log_Content']);?>
                    </div>
             	</div>
                 

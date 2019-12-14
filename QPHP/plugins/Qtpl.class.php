@@ -38,6 +38,17 @@ class Qtpl{
 	  }
 	  return join('_',$url).".html";
 	}
+	//处理序列化
+	static function getpic($data,$key = 'pic'){
+		if($data){
+			$arr = unserialize($data);
+		}
+		return $arr[$key];
+	}
+	//处理path
+	static function replacepath($str,$domain = 'http://www.51haolu.com/'){
+		return str_replace("{#ZC_BLOG_HOST#}", $domain, $str);
+	}
 	/**
 	 * 创建url
 	 * @param string $ac 控制器名称
