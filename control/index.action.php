@@ -34,5 +34,9 @@ class control_index extends core_action{
 		//print_r($es->update($data));
 		//print_r($es->delete('7mrj9GEBRVWw6AGqGhsw'));
 	}
+	function search(){
+		$params['car'] = '';
+		$this->render('home/index.php', $params);
+	}
 
 }

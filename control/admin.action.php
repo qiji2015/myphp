@@ -12,6 +12,7 @@ class control_admin extends core_action{
 	function index(){
 		$params = array('blogtitle'=>'文章管理');
 		$model = new core_model_post();
+		$page = intval($_GET['p']);
 		$params['page'] = $page;
 		$model->setPage($page);
 		$model->setLimit(core_lib_constant::PAGE_NUM);
@@ -21,7 +22,7 @@ class control_admin extends core_action{
 			$search = Qutil::filter($_POST['search']);
 			$condi[] = "(log_Title like '%{$search}%' or log_Intro like '%{$search}%')";
 		}
-		$rs = $model->select($condi);
+		$rs = $model->select($condi,'*',"order by log_PostTime desc");
 	    $params['totalSize'] = $rs->totalSize;
 	    $params['post'] = $rs->items;
 	    $cate = new core_model_category();
